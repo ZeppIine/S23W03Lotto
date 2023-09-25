@@ -11,6 +11,9 @@ class LottoViewModel : ViewModel( ) {
         get() = _numbers
     fun generate() {
         var num = 0
+
+        for (i in _numbers.indices) { _numbers[i] = 0 }
+
         for (i in _numbers.indices) {
 //            _numbers[i] = Random.nextInt(1, 46)
             // 중복 검사
