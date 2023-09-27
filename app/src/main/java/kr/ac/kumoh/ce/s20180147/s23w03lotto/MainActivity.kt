@@ -29,22 +29,24 @@ class MainActivity : AppCompatActivity() {
 //        txtNum[5] = main.num6
 
         model = ViewModelProvider(this)[LottoViewModel::class.java]
-        txtNum.forEachIndexed { index, textView ->
-            textView?.text = model.numbers[index].toString()
-        }
+        setNumbersText()
 
         main.btnGenerate.setOnClickListener {
             model.generate()
-            txtNum.forEachIndexed { index, textView ->
-                textView?.text = model.numbers[index].toString()
-            }
+            setNumbersText()
+        }
+    }
+
+    private fun setNumbersText() {
+        txtNum.forEachIndexed { index, textView ->
+            textView?.text = model.numbers.value!![index].toString()
+        }
 //            main.num1.text = model.numbers[0].toString()
 //            main.num2.text = model.numbers[1].toString()
 //            main.num3.text = model.numbers[2].toString()
 //            main.num4.text = model.numbers[3].toString()
 //            main.num5.text = model.numbers[4].toString()
 //            main.num6.text = model.numbers[5].toString()
-        }
     }
 
     override fun onStart() {
